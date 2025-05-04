@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pottery Date?</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #d2b48c; /* darker beige */
+      color: #4b2e2e;
+      text-align: center;
+    }
+
+    .container {
+      padding: 50px 20px;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 0;
+      color: #6b4c3b;
+      text-shadow: 1px 1px #deb887;
+    }
+
+    h2 {
+      font-size: 2.5em;
+      margin-top: 10px;
+    }
+
+    .heart {
+      font-size: 2.5em;
+      margin: 20px 0;
+      color: #d2691e;
+    }
+
+    .images {
+      margin-top: 30px;
+    }
+
+    .images img {
+      width: 250px;
+      height: auto;
+      margin: 10px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #a0522d;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 1.2em;
+      color: #5a3e36;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      background-color: #ffb6b6;
+      color: #4b2e2e;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    }
+
+    #yesBtn:hover {
+      background-color: #ff8c94;
+    }
+
+    #message {
+      margin-top: 30px;
+      font-size: 2em;
+      color: #ff69b4;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mr. Vishesh Sharma!</h1>
+    <h2>Will you go on a pottery date with me? 🏺💕🌸</h2>
+
+    <div class="heart">💘 🧡 💞 💫 🏺 🧡</div>
+
+    <div class="images">
+      <img src="#" alt="Our Photo 1">
+      <img src="#" alt="Our Photo 2">
+    </div>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn">No 😅</button>
+    </div>
+
+    <div id="message"></div>
+
+    <div class="footer">
+      Just us, clay, and love... together 💕✨
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const message = document.getElementById("message");
+
+    let moveCount = 0;
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.floor(Math.random() * 200) - 100; // random move
+      const y = Math.floor(Math.random() * 100) - 50;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+      moveCount++;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      message.innerText = "I knew it! 💖";
+      message.style.opacity = 0;
+      message.style.animation = "fadeIn 1s forwards";
+    });
+  </script>
+</body>
+</html>
