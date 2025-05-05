@@ -5,133 +5,126 @@
   <title>Pottery Date?</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background-color: #d2b48c; /* darker beige */
-      color: #4b2e2e;
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #fde4c3;
       text-align: center;
-    }
-
-    .container {
-      padding: 50px 20px;
+      padding: 30px;
     }
 
     h1 {
-      font-size: 2.8em;
-      margin-bottom: 0;
-      color: #6b4c3b;
-      text-shadow: 1px 1px #deb887;
+      color: #8b5e3c;
+      font-size: 3em;
     }
 
     h2 {
-      font-size: 2.5em;
-      margin-top: 10px;
+      color: #a0522d;
+      margin-bottom: 20px;
     }
 
-    .heart {
-      font-size: 2.5em;
-      margin: 20px 0;
-      color: #d2691e;
-    }
-
-    .images {
-      margin-top: 30px;
-    }
-
-    .images img {
+    img {
       width: 250px;
       height: auto;
-      margin: 10px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px #a0522d;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #d2b48c;
+      margin-top: 20px;
+    }
+
+    .btn {
+      font-size: 1.5em;
+      padding: 10px 20px;
+      margin: 20px 10px;
+      background-color: #ffb6c1;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+    }
+
+    #response {
+      font-size: 2em;
+      margin-top: 20px;
+      display: none;
+      color: #e75480;
     }
 
     .footer {
       margin-top: 40px;
       font-size: 1.2em;
-      color: #5a3e36;
-    }
-
-    .buttons {
-      margin-top: 30px;
-    }
-
-    button {
-      font-size: 1.2em;
-      padding: 10px 20px;
-      margin: 10px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s ease;
-      background-color: #ffb6b6;
-      color: #4b2e2e;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
-    }
-
-    #yesBtn:hover {
-      background-color: #ff8c94;
-    }
-
-    #message {
-      margin-top: 30px;
-      font-size: 2em;
-      color: #ff69b4;
-      opacity: 0;
-      animation: fadeIn 2s forwards;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: scale(1.1);
-      }
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <h1>Mr. Vishesh Sharma!</h1>
-    <h2>Will you go on a pottery date with me? 🏺💕🌸</h2>
+<body onclick="playMusic()">
 
-    <div class="heart">💘 🧡 💞 💫 🏺 🧡</div>
+  <h1>Mr. Vishesh Sharma!</h1>
+  <h2>Will you go on a pottery date with me? 🏺💕</h2>
 
-    <div class="images">
-      <img src="#" alt="Our Photo 1">
-      <img src="#" alt="Our Photo 2">
-    </div>
-
-    <div class="buttons">
-      <button id="yesBtn">Yes 💖</button>
-      <button id="noBtn">No 😅</button>
-    </div>
-
-    <div id="message"></div>
-
-    <div class="footer">
-      Just us, clay, and love... together 💕✨
-    </div>
+  <div>
+    <img src="photo1.jpg" alt="Our memory photo">
   </div>
 
+  <p>(Click anywhere to play music 🎶)</p>
+
+  <div>
+    <button class="btn" onclick="sayYes()">Yes 💖</button>
+    <button class="btn" id="noBtn" onmouseover="moveButton()">No 😳</button>
+  </div>
+
+  <div id="response">Congratulations, Vishesh Sharma!
+
+    You have been selected for a special "Princess Treatment" for one day, offered by Yashika Cutie Center. Out of 10,000 individuals, you are the luckiest chosen person for this exclusive opportunity.
+    
+    Kindly enjoy the full benefits of this offer. If you like this treatment then to avail this offer next time, a serive fee will be applicable.
+    
+    Disclaimer:
+    To verify that you are indeed Vishesh Sharma, you will be required to send a personal video clip of yourself saying "I love you."
+    
+    Thank you very much!</div>
+
+  <div class="footer">Just us, clay, and love... together 💞✨</div>
+
+  <audio id="bgMusic" loop preload="auto">
+    <source src="pottery-love-song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
   <script>
-    const noBtn = document.getElementById("noBtn");
-    const yesBtn = document.getElementById("yesBtn");
-    const message = document.getElementById("message");
+    function sayYes() {
+      document.getElementById("response").style.display = "block";
+    }
 
-    let moveCount = 0;
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.floor(Math.random() * 200) - 100; // random move
-      const y = Math.floor(Math.random() * 100) - 50;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
-      moveCount++;
-    });
+    function moveButton() {
+      const btn = document.getElementById("noBtn");
+      const x = Math.floor(Math.random() * 200) - 100;
+      const y = Math.floor(Math.random() * 200) - 100;
+      btn.style.position = "relative";
+      btn.style.left = `${x}px`;
+      btn.style.top = `${y}px`;
+    }
 
-    yesBtn.addEventListener("click", () => {
-      message.innerText = "I knew it! 💖";
-      message.style.opacity = 0;
-      message.style.animation = "fadeIn 1s forwards";
+    function playMusic() {
+      const music = document.getElementById("bgMusic");
+      try {
+        if (music.paused) {
+          const playPromise = music.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(error => {
+              console.log("Playback prevented:", error);
+              // Show a message to the user
+              alert("Please click the page to start the music!");
+            });
+          }
+        }
+      } catch (error) {
+        console.log("Error playing music:", error);
+      }
+    }
+
+    // Add an event listener for when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      // Try to play music when the page loads
+      playMusic();
     });
   </script>
+
 </body>
 </html>
